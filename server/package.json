@@ -11,7 +11,7 @@
     "build": "tsup src/server.ts",
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts --fix",
-    "vercel-build": "npx prisma migrate deploy"
+    "vercel-build": "npm run build && npx prisma migrate deploy && npm run start"
   },
   "keywords": [],
   "author": "",
