@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.button-green {
+  @apply flex rounded-full bg-green-500 px-5 h-12 items-center  justify-center  text-center font-alt text-xs uppercase leading-none text-black transition-colors hover:bg-green-600 border-2 border-green-600 hover:animate-pulse duration-1000 hover:border-green-500 xs:text-sm;
+}
+
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 1rem;
+    
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(217, 217, 227, 0.5);
+    border-radius:1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
