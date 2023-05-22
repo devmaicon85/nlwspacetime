@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { extname, resolve } from 'node:path'
 import { FastifyInstance } from 'fastify'
-import { createWriteStream } from 'node:fs'
+import { createWriteStream, existsSync, mkdirSync } from 'node:fs'
 import { pipeline } from 'node:stream'
 import { promisify } from 'node:util'
 
@@ -35,9 +35,14 @@ export async function uploadRoutes(app: FastifyInstance) {
       const fileName = fileId.concat(extension)
       console.log('🚀 ~ file: upload.ts:36 ~ app.post ~ fileName:', fileName)
 
-      const writeStream = createWriteStream(
-        resolve(__dirname, '../../uploads', fileName),
-      )
+      const directoryPath = resolve(__dirname, '../../uploads')
+
+      if (!existsSync(directoryPath)) {
+        // O diretório não existe, você pode criar o diretório aqui
+        mkdirSync(directoryPath, { recursive: true })
+      }
+
+      const writeStream = createWriteStream(resolve(directoryPath, fileName))
 
       await pump(upload.file, writeStream)
 
