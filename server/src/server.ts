@@ -31,10 +31,17 @@ app.register(uploadRoutes)
 app.register(authRoutes)
 app.register(memoriesRoutes)
 
+// app.listen({
+//   port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
+//   listenTextResolver: (address) => {
+//     return `🚀 HTTP server running on http://localhost:${address}`
+//   },
+// })
+
 app
-  .listen({
-    port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
-  })
-  .then(() => {
-    console.log('🚀 HTTP server running on http://localhost:3333')
+  .listen({ port: process.env.PORT ? parseInt(process.env.PORT) : 3000 })
+  .then((address) => console.log(`🚀server listening on ${address}`))
+  .catch((err) => {
+    console.log('Error starting server:', err)
+    process.exit(1)
   })
