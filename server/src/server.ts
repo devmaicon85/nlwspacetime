@@ -8,13 +8,12 @@ import { authRoutes } from './routes/auth'
 import fastifyMultipart from '@fastify/multipart'
 import { uploadRoutes } from './routes/upload'
 import fastifyStatic from '@fastify/static'
-import { resolve } from 'node:path'
 
 const app = fastify()
 
 app.register(fastifyMultipart)
 
-const directoryPath = resolve(__dirname, '../uploads')
+const directoryPath = '../uploads'
 console.log('🚀 ~ file: server.ts:18 ~ directoryPath:', directoryPath)
 
 app.register(fastifyStatic, {

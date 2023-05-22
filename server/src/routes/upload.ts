@@ -32,7 +32,7 @@ export async function uploadRoutes(app: FastifyInstance) {
 
       const fileName = fileId.concat(extension)
 
-      const directoryPath = resolve(__dirname, '../../uploads')
+      const directoryPath = '../../uploads' // resolve(__dirname, '../../uploads')
 
       if (!existsSync(directoryPath)) {
         console.log(
