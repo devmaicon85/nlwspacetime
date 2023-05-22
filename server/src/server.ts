@@ -20,7 +20,7 @@ app.register(fastifyStatic, {
 })
 
 app.register(cors, {
-  origin: ['http://localhost:3000', 'https://spacetime2023.vercel.app'], // todas as url de front end
+  origin: true, // todas as url de front end
 })
 
 app.register(jwt, {
