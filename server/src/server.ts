@@ -14,8 +14,11 @@ const app = fastify()
 
 app.register(fastifyMultipart)
 
+const directoryPath = resolve(__dirname, '../uploads')
+console.log('🚀 ~ file: server.ts:18 ~ directoryPath:', directoryPath)
+
 app.register(fastifyStatic, {
-  root: resolve(__dirname, '../uploads'),
+  root: directoryPath,
   prefix: '/uploads',
 })
 
