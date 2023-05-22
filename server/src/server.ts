@@ -33,7 +33,7 @@ app.register(memoriesRoutes)
 
 app
   .listen({
-    port: 3000,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 3333,
     host: '0.0.0.0',
   })
   .then((address) => console.log(`🚀server listening on ${address}`))
