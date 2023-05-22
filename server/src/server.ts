@@ -20,7 +20,7 @@ app.register(fastifyStatic, {
 })
 
 app.register(cors, {
-  origin: ['http://localhost:3000'], // todas as url de front end
+  origin: ['http://localhost:3000', 'https://spacetime2023.vercel.app'], // todas as url de front end
 })
 
 app.register(jwt, {
@@ -33,7 +33,7 @@ app.register(memoriesRoutes)
 
 app
   .listen({
-    port: 3333,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
   })
   .then(() => {
     console.log('🚀 HTTP server running on http://localhost:3333')
