@@ -28,18 +28,24 @@ export async function uploadRoutes(app: FastifyInstance) {
       }
 
       const fileId = randomUUID()
-      console.log('🚀 ~ file: upload.ts:31 ~ app.post ~ fileId:', fileId)
       const extension = extname(upload.filename)
-      console.log('🚀 ~ file: upload.ts:33 ~ app.post ~ extension:', extension)
 
       const fileName = fileId.concat(extension)
-      console.log('🚀 ~ file: upload.ts:36 ~ app.post ~ fileName:', fileName)
 
       const directoryPath = resolve(__dirname, '../../uploads')
 
       if (!existsSync(directoryPath)) {
+        console.log(
+          '🚀 ~ file: upload.ts:39 directoryPath no exist:',
+          directoryPath,
+        )
         // O diretório não existe, você pode criar o diretório aqui
         mkdirSync(directoryPath, { recursive: true })
+
+        console.log(
+          '🚀 ~ file: upload.ts:46 directoryPath criado',
+          directoryPath,
+        )
       }
 
       const writeStream = createWriteStream(resolve(directoryPath, fileName))
